@@ -2,6 +2,7 @@ header {
     max-width: 80rem;
     width: 100%;
     padding: 1.25rem 2rem;
+    margin-inline: auto;
 
     display: flex;
     align-items: center;
@@ -29,8 +30,8 @@ header {
     a span {
         font: 500 0.75rem/1.3 "Inter", sans-serif;
         position: absolute; 
-        top: 0.5rem;
-        right: 0.5rem;
+        top: -0.5rem;
+        right: -0.5rem;
 
         background-color: var(--snitap-sun);
 
