@@ -4,6 +4,11 @@ section.hero {
     padding: 2.5rem 2rem;
     margin-inline: auto;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+
     & h1 {
         max-width: 40rem;
     }
@@ -35,7 +40,7 @@ section.hero {
     & h1 span {
         display: block;
 
-        animation: slideUp 6s infinite ease;
+        animation: slideUp 6s 3s infinite ease;
     }
 
     /* Buttons */
@@ -53,10 +58,10 @@ section.hero {
 
             transition: scale 350ms;
 
-        &.buy {
-            /* Se der espaço do & e a classe buy, a IDE vai pensar que a classe esta depois de button e nao dentro (so passa o mouse em cima vc vai saber)*/
-            padding: 1.5rem 3rem;
-            background-color: var(--snitap-sun);
+            &.buy {
+                /* Se der espaço do & e a classe buy, a IDE vai pensar que a classe esta depois de button e nao dentro (so passa o mouse em cima vc vai saber)*/
+                padding: 1.5rem 3rem;
+                background-color: var(--snitap-sun);
             }
 
             &.play span {
@@ -72,13 +77,82 @@ section.hero {
         }
 
         & .shadow {
-            box-shadow: 
-            0 2px 5px rgb(0 0 0 /.1),
-            0 9px 9px rgb(0 0 0 /.09),
-            0 20px 12px rgb(0 0 0 /.05),
-            0 36px 15px rgb(0 0 0 /.01)
-            ;
+            box-shadow:
+                0 2px 5px rgb(0 0 0 /.1),
+                0 9px 9px rgb(0 0 0 /.09),
+                0 20px 12px rgb(0 0 0 /.05),
+                0 36px 15px rgb(0 0 0 /.01);
         }
+    }
+
+    /* Patins */
+    &>div:nth-child(2) {
+        display: block;
+        width: 100%;
+        max-width: 30.5rem;
+        height: 30.5rem;
+
+        & .content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        & img {
+            position: absolute;
+            width: 100%;
+        }
+
+        & img[src*="Ellipse"] {
+            width: 94%;
+            top: 3%;
+            left: 3%;
+
+            transform: translateX(200%);
+            animation: slideIn 3s ease forwards;
+        }
+
+        & img[src*="patins"] {
+            z-index: 1;
+            transform: translateX(200%);
+            animation: slideIn 3s 200ms ease forwards;
+        }
+
+        & img[src*="stars-1"] {
+            max-width: 5.5rem;
+            top: 30%;
+            z-index: 0;
+            opacity: 0;
+            transform: translateX(400%);
+            animation: slideIn 2s 800ms ease both, apper 100ms 800ms both;
+        }
+
+        & img[src*="stars-2"] {
+            max-width: 2.5rem;
+            right: 0;
+            bottom: 35%;
+            transform: translateX(400%);
+            animation: slideIn 2.2s 800ms ease both;
+        }
+    }
+}
+
+@keyframes slideIn {
+    50% {
+        transform: translateX(-20px);
+    }
+    
+    100% {
+        transform: translateX(0);
+
+    }
+
+
+}
+
+@keyframes apper {
+    to {
+        opacity: 1;
     }
 }
 
@@ -158,5 +232,24 @@ section.hero {
 
     100% {
         transform: translateY(-15rem);
+    }
+}
+
+@media (width <= 70rem) {
+    section.hero {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 2rem;
+        padding: 2.5rem 1rem;
+
+        & .buttons {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        & .button {
+            width: 100%;
+            justify-content: center;
+        }
     }
 }
